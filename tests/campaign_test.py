@@ -30,13 +30,13 @@ def test_create_campaign_endpoint(test_client, mock_mongo):
     assert isinstance(campaign_id, str)
 
     # Verify campaign exists in mocked DB
-    # coll = db.get_collection("dummy-data")
-    # campaign = coll.find_one({"_id": ObjectId(campaign_id)})
-    # assert campaign is not None
-    # assert campaign["name"] == "Dummy Campaign"
-    # assert campaign["platform"] == "Meta"
-    # assert campaign["status"] == "active"
-    # assert campaign["budget"] == 1000
-    # assert campaign["metadata"]["region"] == "IN"
-    # assert isinstance(campaign["created_at"], datetime)
-    # assert isinstance(campaign["updated_at"], datetime)
+    coll = db.get_collection("dummy-data")
+    campaign = coll.find_one({"_id": ObjectId(campaign_id)})
+    assert campaign is not None
+    assert campaign["name"] == "Dummy Campaign"
+    assert campaign["platform"] == "Meta"
+    assert campaign["status"] == "active"
+    assert campaign["budget"] == 1000
+    assert campaign["metadata"]["region"] == "IN"
+    assert isinstance(campaign["created_at"], datetime)
+    assert isinstance(campaign["updated_at"], datetime)
