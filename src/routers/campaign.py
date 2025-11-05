@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from src.conn.mongodb import campaigns_collection
+from src.conn.mongodb import MongoDBConns
 from src.models.campaign import Campaign
 
 
@@ -12,6 +12,7 @@ router = APIRouter(
 async def create_campaign(
         request: Campaign
 ):
-    result = await campaigns_collection.insert_one(dict(request))
-    return result.acknowledged
+    mongo_conn = MongoDBConns()
+    result = mongo_conn.create_campaign(request)
+    return result
 

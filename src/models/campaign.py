@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import Optional
+from typing import Optional, Dict, Any
 
 
 class Campaign(BaseModel):
@@ -7,6 +7,5 @@ class Campaign(BaseModel):
     platform: str = Field(title="platform", example="Meta")
     budget: float = Field(title="campaign budget", example=1000.0)
     status: str = Field(title="campaign status", example="active")
-    impressions: Optional[int] = Field(title="clicks", example=750)
-    clicks: Optional[int] = Field(title="clicks", example=75)
+    metadata: Dict[str, Any] = Field(title="metadata", example=750)
 
